@@ -136,41 +136,6 @@
                          appData:nil];
 }
 
-+ (FIRInAppMessagingCardDisplay *)
-    cardMessageForSwiftUIPreviewsWithTitle:(NSString *)title
-                                      body:(NSString *)body
-                                 textColor:(UIColor *)textColor
-                             portraitImage:(UIImage *)portraitImage
-                            landscapeImage:(UIImage *)landscapeImage
-                           backgroundColor:(UIColor *)backgroundColor
-                       primaryActionButton:(FIRInAppMessagingActionButton *)primaryActionButton
-                     secondaryActionButton:(FIRInAppMessagingActionButton *)secondaryActionButton
-                                   appData:(NSDictionary *)appData {
-  FIRInAppMessagingImageData *portraitImageData =
-      [[FIRInAppMessagingImageData alloc] initWithImageURL:@"http://fakeurl.com"
-                                                 imageData:UIImagePNGRepresentation(portraitImage)];
-  FIRInAppMessagingImageData *landscapeImageData = [[FIRInAppMessagingImageData alloc]
-      initWithImageURL:@"http://fakeurl.com"
-             imageData:UIImagePNGRepresentation(landscapeImage)];
-  FIRInAppMessagingCardDisplay *cardMessage = [[FIRInAppMessagingCardDisplay alloc]
-        initWithMessageID:@"testMessage"
-             campaignName:@"testCampaign"
-        experimentPayload:nil
-      renderAsTestMessage:YES
-              triggerType:FIRInAppMessagingDisplayTriggerTypeOnAnalyticsEvent
-                titleText:title
-                textColor:textColor
-        portraitImageData:portraitImageData
-          backgroundColor:backgroundColor
-      primaryActionButton:primaryActionButton
-         primaryActionURL:nil
-                  appData:appData];
-  [cardMessage setBody:body];
-  [cardMessage setLandscapeImageData:landscapeImageData];
-  [cardMessage setSecondaryActionButton:secondaryActionButton];
-  return cardMessage;
-}
-
 @end
 
 @implementation FIRInAppMessagingBannerDisplay
@@ -225,31 +190,6 @@
                        imageData:imageData
                        actionURL:actionURL
                          appData:nil];
-}
-
-+ (FIRInAppMessagingBannerDisplay *)
-    bannerMessageForSwiftUIPreviewsWithTitle:(NSString *)title
-                                        body:(NSString *)body
-                                   textColor:(UIColor *)textColor
-                                       image:(UIImage *)image
-                             backgroundColor:(UIColor *)backgroundColor
-                                actionButton:(FIRInAppMessagingActionButton *)actionButton
-                                     appData:(NSDictionary *)appData {
-  return [[FIRInAppMessagingBannerDisplay alloc]
-        initWithMessageID:@"testMessage"
-             campaignName:@"testCampaign"
-        experimentPayload:nil
-      renderAsTestMessage:YES
-              triggerType:FIRInAppMessagingDisplayTriggerTypeOnAnalyticsEvent
-                titleText:title
-                 bodyText:body
-                textColor:textColor
-          backgroundColor:backgroundColor
-                imageData:[[FIRInAppMessagingImageData alloc]
-                              initWithImageURL:@"http://fakeurl.com"
-                                     imageData:UIImagePNGRepresentation(image)]
-                actionURL:nil
-                  appData:appData];
 }
 
 @end
@@ -313,32 +253,6 @@
                          appData:nil];
 }
 
-+ (FIRInAppMessagingModalDisplay *)
-    modalMessageForSwiftUIPreviewsWithTitle:(NSString *)title
-                                       body:(NSString *)body
-                                  textColor:(UIColor *)textColor
-                                      image:(UIImage *)image
-                            backgroundColor:(UIColor *)backgroundColor
-                               actionButton:(FIRInAppMessagingActionButton *)actionButton
-                                    appData:(NSDictionary *)appData {
-  return [[FIRInAppMessagingModalDisplay alloc]
-        initWithMessageID:@"testMessage"
-             campaignName:@"testCampaign"
-        experimentPayload:nil
-      renderAsTestMessage:YES
-              triggerType:FIRInAppMessagingDisplayTriggerTypeOnAnalyticsEvent
-                titleText:title
-                 bodyText:body
-                textColor:textColor
-          backgroundColor:backgroundColor
-                imageData:[[FIRInAppMessagingImageData alloc]
-                              initWithImageURL:@"http://fakeurl.com"
-                                     imageData:UIImagePNGRepresentation(image)]
-             actionButton:actionButton
-                actionURL:nil
-                  appData:appData];
-}
-
 @end
 
 @implementation FIRInAppMessagingImageOnlyDisplay
@@ -378,22 +292,6 @@
                        imageData:imageData
                        actionURL:actionURL
                          appData:nil];
-}
-
-+ (FIRInAppMessagingImageOnlyDisplay *)imageOnlyMessageForSwiftUIPreviewsWithImage:(UIImage *)image
-                                                                           appData:(NSDictionary *)
-                                                                                       appData {
-  return [[FIRInAppMessagingImageOnlyDisplay alloc]
-        initWithMessageID:@"testMessage"
-             campaignName:@"testCampaign"
-        experimentPayload:nil
-      renderAsTestMessage:YES
-              triggerType:FIRInAppMessagingDisplayTriggerTypeOnAnalyticsEvent
-                imageData:[[FIRInAppMessagingImageData alloc]
-                              initWithImageURL:@"http://fakeurl.com"
-                                     imageData:UIImagePNGRepresentation(image)]
-                actionURL:nil
-                  appData:appData];
 }
 
 @end

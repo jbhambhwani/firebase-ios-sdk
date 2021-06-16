@@ -19,6 +19,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class ABTExperimentPayload;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /// The type and UI style of an in-app message.
@@ -234,19 +236,22 @@ NS_SWIFT_NAME(InAppMessagingCardDisplay)
 /// Unavailable.
 - (instancetype)init NS_UNAVAILABLE;
 
-/// Convenience initializer for custom message view debugging in SwiftUI previews. Should only be
-/// used in SwiftUI projects.
-+ (FIRInAppMessagingCardDisplay *)
-    cardMessageForSwiftUIPreviewsWithTitle:(NSString *)title
-                                      body:(nullable NSString *)body
-                                 textColor:(UIColor *)textColor
-                             portraitImage:(UIImage *)portraitImage
-                            landscapeImage:(nullable UIImage *)landscapeImage
-                           backgroundColor:(UIColor *)backgroundColor
-                       primaryActionButton:(FIRInAppMessagingActionButton *)primaryActionButton
-                     secondaryActionButton:
-                         (nullable FIRInAppMessagingActionButton *)secondaryActionButton
-                                   appData:(nullable NSDictionary *)appData;
+- (instancetype)initWithMessageID:(NSString *)messageID
+                     campaignName:(NSString *)campaignName
+                experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
+              renderAsTestMessage:(BOOL)renderAsTestMessage
+                      triggerType:(FIRInAppMessagingDisplayTriggerType)triggerType
+                        titleText:(NSString *)title
+                         bodyText:(nullable NSString *)bodyText
+                        textColor:(UIColor *)textColor
+                portraitImageData:(FIRInAppMessagingImageData *)portraitImageData
+               landscapeImageData:(nullable FIRInAppMessagingImageData *)landscapeImageData
+                  backgroundColor:(UIColor *)backgroundColor
+              primaryActionButton:(FIRInAppMessagingActionButton *)primaryActionButton
+            secondaryActionButton:(nullable FIRInAppMessagingActionButton *)secondaryActionButton
+                 primaryActionURL:(nullable NSURL *)primaryActionURL
+               secondaryActionURL:(nullable NSURL *)secondaryActionURL
+                          appData:(nullable NSDictionary *)appData;
 
 @end
 
@@ -293,16 +298,19 @@ NS_SWIFT_NAME(InAppMessagingModalDisplay)
 /// Unavailable.
 - (instancetype)init NS_UNAVAILABLE;
 
-/// Convenience initializer for custom message view debugging in SwiftUI previews. Should only be
-/// used in SwiftUI projects.
-+ (FIRInAppMessagingModalDisplay *)
-    modalMessageForSwiftUIPreviewsWithTitle:(NSString *)title
-                                       body:(nullable NSString *)body
-                                  textColor:(UIColor *)textColor
-                                      image:(nullable UIImage *)image
-                            backgroundColor:(UIColor *)backgroundColor
-                               actionButton:(nullable FIRInAppMessagingActionButton *)actionButton
-                                    appData:(nullable NSDictionary *)appData;
+- (instancetype)initWithMessageID:(NSString *)messageID
+                     campaignName:(NSString *)campaignName
+                experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
+              renderAsTestMessage:(BOOL)renderAsTestMessage
+                      triggerType:(FIRInAppMessagingDisplayTriggerType)triggerType
+                        titleText:(NSString *)title
+                         bodyText:(NSString *)bodyText
+                        textColor:(UIColor *)textColor
+                  backgroundColor:(UIColor *)backgroundColor
+                        imageData:(nullable FIRInAppMessagingImageData *)imageData
+                     actionButton:(nullable FIRInAppMessagingActionButton *)actionButton
+                        actionURL:(nullable NSURL *)actionURL
+                          appData:(nullable NSDictionary *)appData;
 
 @end
 
@@ -344,16 +352,18 @@ NS_SWIFT_NAME(InAppMessagingBannerDisplay)
 /// Unavailable.
 - (instancetype)init NS_UNAVAILABLE;
 
-/// Convenience initializer for custom message view debugging in SwiftUI previews. Should only be
-/// used in SwiftUI projects.
-+ (FIRInAppMessagingBannerDisplay *)
-    bannerMessageForSwiftUIPreviewsWithTitle:(NSString *)title
-                                        body:(nullable NSString *)body
-                                   textColor:(UIColor *)textColor
-                                       image:(nullable UIImage *)image
-                             backgroundColor:(UIColor *)backgroundColor
-                                actionButton:(nullable FIRInAppMessagingActionButton *)actionButton
-                                     appData:(nullable NSDictionary *)appData;
+- (instancetype)initWithMessageID:(NSString *)messageID
+                     campaignName:(NSString *)campaignName
+                experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
+              renderAsTestMessage:(BOOL)renderAsTestMessage
+                      triggerType:(FIRInAppMessagingDisplayTriggerType)triggerType
+                        titleText:(NSString *)title
+                         bodyText:(NSString *)bodyText
+                        textColor:(UIColor *)textColor
+                  backgroundColor:(UIColor *)backgroundColor
+                        imageData:(nullable FIRInAppMessagingImageData *)imageData
+                        actionURL:(nullable NSURL *)actionURL
+                          appData:(nullable NSDictionary *)appData;
 
 @end
 
@@ -375,11 +385,14 @@ NS_SWIFT_NAME(InAppMessagingImageOnlyDisplay)
 /// Unavailable.
 - (instancetype)init NS_UNAVAILABLE;
 
-/// Convenience initializer for custom message view debugging in SwiftUI previews. Should only be
-/// used in SwiftUI projects.
-+ (FIRInAppMessagingImageOnlyDisplay *)imageOnlyMessageForSwiftUIPreviewsWithImage:(UIImage *)image
-                                                                           appData:(NSDictionary *)
-                                                                                       appData;
+- (instancetype)initWithMessageID:(NSString *)messageID
+                     campaignName:(NSString *)campaignName
+                experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
+              renderAsTestMessage:(BOOL)renderAsTestMessage
+                      triggerType:(FIRInAppMessagingDisplayTriggerType)triggerType
+                        imageData:(nullable FIRInAppMessagingImageData *)imageData
+                        actionURL:(nullable NSURL *)actionURL
+                          appData:(nullable NSDictionary *)appData;
 
 @end
 

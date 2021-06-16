@@ -26,6 +26,7 @@
 #import "FirebaseInAppMessaging/Sources/Private/Flows/FIRIAMActivityLogger.h"
 #import "FirebaseInAppMessaging/Sources/Private/Flows/FIRIAMDisplayExecutor.h"
 #import "FirebaseInAppMessaging/Sources/Public/FirebaseInAppMessaging/FIRInAppMessaging.h"
+#import "FirebaseInAppMessaging/Sources/Public/FirebaseInAppMessaging/FIRInAppMessagingRendering.h"
 #import "FirebaseInAppMessaging/Sources/RenderingObjects/FIRInAppMessagingRenderingPrivate.h"
 #import "FirebaseInAppMessaging/Sources/Runtime/FIRIAMSDKRuntimeErrorCodes.h"
 
@@ -471,23 +472,22 @@
   }
 
   FIRInAppMessagingCardDisplay *cardMessage = [[FIRInAppMessagingCardDisplay alloc]
-        initWithMessageID:renderData.messageID
-             campaignName:renderData.name
-        experimentPayload:definition.experimentPayload
-      renderAsTestMessage:definition.isTestMessage
-              triggerType:triggerType
-                titleText:title
-                textColor:renderData.renderingEffectSettings.textColor
-        portraitImageData:portraitImageData
-          backgroundColor:renderData.renderingEffectSettings.displayBGColor
-      primaryActionButton:primaryActionButton
-         primaryActionURL:definition.renderData.contentData.actionURL
-                  appData:definition.appData];
-
-  cardMessage.body = body;
-  cardMessage.landscapeImageData = landscapeImageData;
-  cardMessage.secondaryActionButton = secondaryActionButton;
-  cardMessage.secondaryActionURL = definition.renderData.contentData.secondaryActionURL;
+          initWithMessageID:renderData.messageID
+               campaignName:renderData.name
+          experimentPayload:definition.experimentPayload
+        renderAsTestMessage:definition.isTestMessage
+                triggerType:triggerType
+                  titleText:title
+                   bodyText:body
+                  textColor:renderData.renderingEffectSettings.textColor
+          portraitImageData:portraitImageData
+         landscapeImageData:landscapeImageData
+            backgroundColor:renderData.renderingEffectSettings.displayBGColor
+        primaryActionButton:primaryActionButton
+      secondaryActionButton:secondaryActionButton
+           primaryActionURL:definition.renderData.contentData.actionURL
+         secondaryActionURL:definition.renderData.contentData.secondaryActionURL
+                    appData:definition.appData];
 
   return cardMessage;
 }

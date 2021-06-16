@@ -18,28 +18,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FIRInAppMessagingCardDisplay (Private)
-
-- (void)setBody:(NSString *_Nullable)body;
-- (void)setLandscapeImageData:(FIRInAppMessagingImageData *_Nullable)landscapeImageData;
-- (void)setSecondaryActionButton:(FIRInAppMessagingActionButton *_Nullable)secondaryActionButton;
-- (void)setSecondaryActionURL:(NSURL *_Nullable)secondaryActionURL;
-
-- (instancetype)initWithMessageID:(NSString *)messageID
-                     campaignName:(NSString *)campaignName
-                experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
-              renderAsTestMessage:(BOOL)renderAsTestMessage
-                      triggerType:(FIRInAppMessagingDisplayTriggerType)triggerType
-                        titleText:(NSString *)title
-                        textColor:(UIColor *)textColor
-                portraitImageData:(FIRInAppMessagingImageData *)portraitImageData
-                  backgroundColor:(UIColor *)backgroundColor
-              primaryActionButton:(FIRInAppMessagingActionButton *)primaryActionButton
-                 primaryActionURL:(nullable NSURL *)primaryActionURL
-                          appData:(nullable NSDictionary *)appData;
-
-@end
-
 @interface FIRInAppMessagingImageData (Private)
 
 - (instancetype)initWithImageURL:(NSString *)imageURL imageData:(NSData *)imageData;
@@ -71,54 +49,6 @@ NS_ASSUME_NONNULL_BEGIN
               renderAsTestMessage:(BOOL)renderAsTestMessage
                       messageType:(FIRInAppMessagingDisplayMessageType)messageType
                       triggerType:(FIRInAppMessagingDisplayTriggerType)triggerType
-                          appData:(nullable NSDictionary *)appData;
-
-@end
-
-@interface FIRInAppMessagingModalDisplay (Private)
-
-- (instancetype)initWithMessageID:(NSString *)messageID
-                     campaignName:(NSString *)campaignName
-                experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
-              renderAsTestMessage:(BOOL)renderAsTestMessage
-                      triggerType:(FIRInAppMessagingDisplayTriggerType)triggerType
-                        titleText:(NSString *)title
-                         bodyText:(NSString *)bodyText
-                        textColor:(UIColor *)textColor
-                  backgroundColor:(UIColor *)backgroundColor
-                        imageData:(nullable FIRInAppMessagingImageData *)imageData
-                     actionButton:(nullable FIRInAppMessagingActionButton *)actionButton
-                        actionURL:(nullable NSURL *)actionURL
-                          appData:(nullable NSDictionary *)appData;
-
-@end
-
-@interface FIRInAppMessagingBannerDisplay (Private)
-
-- (instancetype)initWithMessageID:(NSString *)messageID
-                     campaignName:(NSString *)campaignName
-                experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
-              renderAsTestMessage:(BOOL)renderAsTestMessage
-                      triggerType:(FIRInAppMessagingDisplayTriggerType)triggerType
-                        titleText:(NSString *)title
-                         bodyText:(NSString *)bodyText
-                        textColor:(UIColor *)textColor
-                  backgroundColor:(UIColor *)backgroundColor
-                        imageData:(nullable FIRInAppMessagingImageData *)imageData
-                        actionURL:(nullable NSURL *)actionURL
-                          appData:(nullable NSDictionary *)appData;
-
-@end
-
-@interface FIRInAppMessagingImageOnlyDisplay (Private)
-
-- (instancetype)initWithMessageID:(NSString *)messageID
-                     campaignName:(NSString *)campaignName
-                experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
-              renderAsTestMessage:(BOOL)renderAsTestMessage
-                      triggerType:(FIRInAppMessagingDisplayTriggerType)triggerType
-                        imageData:(nullable FIRInAppMessagingImageData *)imageData
-                        actionURL:(nullable NSURL *)actionURL
                           appData:(nullable NSDictionary *)appData;
 
 @end
