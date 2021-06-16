@@ -236,6 +236,7 @@ NS_SWIFT_NAME(InAppMessagingCardDisplay)
 /// Unavailable.
 - (instancetype)init NS_UNAVAILABLE;
 
+/// Should be used for testing purposes only, not in app's business logic.
 - (instancetype)initWithMessageID:(NSString *)messageID
                      campaignName:(NSString *)campaignName
                 experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
@@ -298,6 +299,7 @@ NS_SWIFT_NAME(InAppMessagingModalDisplay)
 /// Unavailable.
 - (instancetype)init NS_UNAVAILABLE;
 
+/// Should be used for testing purposes only, not in app's business logic.
 - (instancetype)initWithMessageID:(NSString *)messageID
                      campaignName:(NSString *)campaignName
                 experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
@@ -352,6 +354,7 @@ NS_SWIFT_NAME(InAppMessagingBannerDisplay)
 /// Unavailable.
 - (instancetype)init NS_UNAVAILABLE;
 
+/// Should be used for testing purposes only, not in app's business logic.
 - (instancetype)initWithMessageID:(NSString *)messageID
                      campaignName:(NSString *)campaignName
                 experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
@@ -385,6 +388,7 @@ NS_SWIFT_NAME(InAppMessagingImageOnlyDisplay)
 /// Unavailable.
 - (instancetype)init NS_UNAVAILABLE;
 
+/// Should be used for testing purposes only, not in app's business logic.
 - (instancetype)initWithMessageID:(NSString *)messageID
                      campaignName:(NSString *)campaignName
                 experimentPayload:(nullable ABTExperimentPayload *)experimentPayload
