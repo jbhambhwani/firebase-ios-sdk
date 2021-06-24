@@ -21,7 +21,7 @@ let firebaseVersion = "8.2.0"
 
 let package = Package(
   name: "Firebase",
-  platforms: [.iOS(.v11), .macOS(.v10_12), .tvOS(.v10), .watchOS(.v7)],
+  platforms: [.iOS(.v13), .macOS(.v10_12), .tvOS(.v10), .watchOS(.v7)],
   products: [
     .library(
       name: "FirebaseAnalytics",
@@ -124,6 +124,11 @@ let package = Package(
       name: "FirebaseStorageSwift-Beta",
       targets: ["FirebaseStorageSwift"]
     ),
+    .library(
+        name: "FirebasePerformance",
+        targets: [
+            "FirebasePerformance",
+        ])
   ],
   dependencies: [
     .package(
@@ -503,6 +508,36 @@ let package = Package(
         "third_party/RTDBEncoder/METADATA",
       ]
     ),
+    
+    
+    .target(
+        name: "FirebasePerformance",
+        dependencies: [
+            "FirebaseABTesting",
+            "FirebaseRemoteConfig",
+            "SwiftProtobuf",
+            "GoogleDataTransport",
+            .product(name: "GULISASwizzler", package: "GoogleUtilities"),
+            .product(name: "GULEnvironment", package: "GoogleUtilities"),
+            .product(name: "GULLogger", package: "GoogleUtilities"),
+            .product(name: "GULMethodSwizzler", package: "GoogleUtilities"),
+            .target(name: "Protobuf", condition: .when(platforms: [.iOS])),
+        ],
+        path: "FirebasePerformance/Sources",
+        exclude: [
+          "DefaultUI/CHANGELOG.md",
+          "DefaultUI/README.md",
+        ],
+        publicHeadersPath: "Public",
+        cSettings: [
+          .headerSearchPath("../../"),
+          .define("PB_FIELD_32BIT", to: "1"),
+          .define("PB_NO_PACKED_STRUCTS", to: "1"),
+          .define("PB_ENABLE_MALLOC", to: "1"),
+        ]
+    ),
+
+    .binaryTarget(name: "Protobuf", path: "FirebasePerformance/Protobuf.xcframework"),
     .testTarget(
       name: "FirebaseDatabaseSwiftTests",
       dependencies: ["FirebaseDatabase", "FirebaseDatabaseSwift"],
