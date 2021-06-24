@@ -517,11 +517,11 @@ let package = Package(
             "FirebaseRemoteConfig",
             "SwiftProtobuf",
             "GoogleDataTransport",
+            "Protobuf",
             .product(name: "GULISASwizzler", package: "GoogleUtilities"),
             .product(name: "GULEnvironment", package: "GoogleUtilities"),
             .product(name: "GULLogger", package: "GoogleUtilities"),
             .product(name: "GULMethodSwizzler", package: "GoogleUtilities"),
-            .target(name: "Protobuf", condition: .when(platforms: [.iOS])),
         ],
         path: "FirebasePerformance/Sources",
         exclude: [
@@ -536,8 +536,8 @@ let package = Package(
           .define("PB_ENABLE_MALLOC", to: "1"),
         ]
     ),
-
     .binaryTarget(name: "Protobuf", path: "FirebasePerformance/Protobuf.xcframework"),
+
     .testTarget(
       name: "FirebaseDatabaseSwiftTests",
       dependencies: ["FirebaseDatabase", "FirebaseDatabaseSwift"],
