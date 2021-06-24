@@ -515,7 +515,6 @@ let package = Package(
         dependencies: [
             "FirebaseABTesting",
             "FirebaseRemoteConfig",
-            "SwiftProtobuf",
             "GoogleDataTransport",
             "Protobuf",
             .product(name: "GULISASwizzler", package: "GoogleUtilities"),
@@ -531,9 +530,7 @@ let package = Package(
         publicHeadersPath: "Public",
         cSettings: [
           .headerSearchPath("../../"),
-          .define("PB_FIELD_32BIT", to: "1"),
-          .define("PB_NO_PACKED_STRUCTS", to: "1"),
-          .define("PB_ENABLE_MALLOC", to: "1"),
+          .define("GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS", to: "1")
         ]
     ),
     .binaryTarget(name: "Protobuf", path: "FirebasePerformance/Protobuf.xcframework"),
