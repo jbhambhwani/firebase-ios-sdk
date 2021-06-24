@@ -522,14 +522,19 @@ let package = Package(
             .product(name: "GULLogger", package: "GoogleUtilities"),
             .product(name: "GULMethodSwizzler", package: "GoogleUtilities"),
         ],
-        path: "FirebasePerformance/Sources",
+        path: "FirebasePerformance",
         exclude: [
-          "DefaultUI/CHANGELOG.md",
-          "DefaultUI/README.md",
+          "CHANGELOG.md",
+          "README.md",
+          "Tests/",
         ],
-        publicHeadersPath: "Public",
+        sources: [
+          "Sources/",
+          "ProtoSupport/"
+        ],
+        publicHeadersPath: "Sources/Public",
         cSettings: [
-          .headerSearchPath("../../"),
+          .headerSearchPath("../"),
           .define("GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS", to: "1")
         ]
     ),
